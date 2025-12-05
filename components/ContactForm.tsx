@@ -28,7 +28,7 @@ const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
   subject: z.enum(["general", "creator", "partnership", "press", "support", "feedback"], {
-    required_error: "Please select a subject",
+    message: "Please select a subject",
   }),
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
