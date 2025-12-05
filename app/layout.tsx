@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: "NUVYLUX | The New Light of Luxury",
     description:
       "Redefining beauty, fashion, and innovation for the modern world.",
-    images: "/assets/opengraph.png",
+    images: "/assets/logo (2).jpg",
   },
 };
 
@@ -59,8 +59,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${outfits.className}`}>
       <Head>
-        <meta property="og:image" content="/opengraph.png" />
-        <meta property="og:image" content="/assets/opengraph.png" />
+        <meta property="og:image" content="/assets/logo (2).jpg" />
+        <meta property="og:image" content="/assets/logo (2).jpg" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=no"

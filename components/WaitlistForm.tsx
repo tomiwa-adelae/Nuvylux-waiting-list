@@ -287,12 +287,7 @@ export default function WaitlistForm() {
           )}
         />
 
-        <Button
-          type="submit"
-          className="w-full"
-          size="lg"
-          disabled={isSubmitting}
-        >
+        <Button type="submit" className="w-full" disabled={isSubmitting}>
           {isSubmitting ? (
             <>
               <svg
