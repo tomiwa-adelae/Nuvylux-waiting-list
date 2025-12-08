@@ -94,7 +94,7 @@ const stats = [
 const teamMembers = [
   { name: "Hannah Diei", role: "CEO", photo: "/assets/ceo.jpg" },
   { name: "Ayo Odunayo", role: "CFO", photo: "/assets/cfo.jpg" },
-  { name: "", role: "CMO", photo: "/assets/cmo.jpg" },
+  { name: "Adeyemi Ayomide", role: "CMO", photo: "/assets/cmo.jpg" },
   { name: "Adaeze Pearl Muoghalu", role: "CCO", photo: "/assets/cco.jpg" },
   { name: "Nkechi Adaosi Agugua", role: "PM", photo: "/assets/pm.jpg" },
   { name: "Esomovie Rita", role: "OM", photo: "/assets/om.jpg" },
