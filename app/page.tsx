@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import WaitlistForm from "@/components/WaitlistForm";
+import Image from "next/image";
 
 const features = [
   {
@@ -88,6 +89,15 @@ const stats = [
   { value: "5", label: "Divisions" },
   { value: "3", label: "Cities" },
   { value: "2026", label: "Launch Year" },
+];
+
+const teamMembers = [
+  { name: "Hannah Diei", role: "CEO", photo: "/assets/ceo.jpg" },
+  { name: "Ayo Odunayo", role: "CFO", photo: "/assets/cfo.jpg" },
+  { name: "", role: "CMO", photo: "/assets/cmo.jpg" },
+  { name: "Adaeze Pearl Muoghalu", role: "CCO", photo: "/assets/cco.jpg" },
+  { name: "Nkechi Adaosi Agugua", role: "PM", photo: "/assets/pm.jpg" },
+  { name: "Esomovie Rita", role: "OM", photo: "/assets/om.jpg" },
 ];
 
 export default function Home() {
@@ -232,6 +242,42 @@ export default function Home() {
                   </p>
                 </CardContent>
               </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="team" className="py-16 bg-secondary">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="font-serif text-4xl font-bold mb-4">
+              Meet Our Team
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              A passionate group of professionals dedicated to connecting beauty
+              and innovation.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+            {teamMembers.map((member) => (
+              <div key={member.name} className="text-center">
+                {/* <img
+                  src={member.photo}
+                  alt={member.name}
+                  className="w-32 h-32 mx-auto rounded-md object-cover mb-4"
+                /> */}
+                <div className="mb-4 aspect-square overflow-hidden rounded-lg">
+                  <Image
+                    width={1000}
+                    height={1000}
+                    src={member.photo || "/placeholder.svg"}
+                    alt={member.name}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <h3 className="font-semibold">{member.name}</h3>
+                <p className="text-sm text-muted-foreground">{member.role}</p>
+              </div>
             ))}
           </div>
         </div>

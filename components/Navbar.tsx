@@ -62,9 +62,9 @@ export default function Navbar() {
 
           {/* CTA Button - Desktop */}
           <div className="hidden lg:block">
-            <Link href="/contact" className="btn-primary inline-block">
-              Get Started
-            </Link>
+            <Button asChild>
+              <Link href="/contact">Get Started</Link>
+            </Button>
           </div>
 
           {/* Mobile Menu - Sheet */}
@@ -91,7 +91,6 @@ export default function Navbar() {
                   />
                 </SheetTitle>
               </SheetHeader>
-              <Separator className="my-4" />
               <ScrollArea className="h-[calc(100vh-200px)]">
                 <div className="flex flex-col gap-2 py-4">
                   {navLinks.map((link) => (
