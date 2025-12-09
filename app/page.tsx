@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import WaitlistForm from "@/components/WaitlistForm";
 import Image from "next/image";
+import Link from "next/link";
 
 const features = [
   {
@@ -92,12 +93,28 @@ const stats = [
 ];
 
 const teamMembers = [
-  { name: "Hannah Diei", role: "CEO", photo: "/assets/ceo.jpg" },
-  { name: "Ayo Odunayo", role: "CFO", photo: "/assets/cfo.jpg" },
-  { name: "Adeyemi Ayomide", role: "CMO", photo: "/assets/cmo.jpg" },
-  { name: "Adaeze Pearl Muoghalu", role: "CCO", photo: "/assets/cco.jpg" },
-  { name: "Nkechi Adaosi Agugua", role: "PM", photo: "/assets/pm.jpg" },
-  { name: "Esomovie Rita", role: "OM", photo: "/assets/om.jpg" },
+  { name: "Hannah Diei", role: "CEO", photo: "/assets/ceo.jpg", url: "" },
+  { name: "Ayo Odunayo", role: "CFO", photo: "/assets/cfo.jpg", url: "" },
+  { name: "Adeyemi Ayomide", role: "CMO", photo: "/assets/cmo.jpg", url: "" },
+  {
+    name: "Adaeze Pearl Muoghalu",
+    role: "CCO",
+    photo: "/assets/cco.jpg",
+    url: "",
+  },
+  {
+    name: "Nkechi Adaosi Agugua",
+    role: "PM",
+    photo: "/assets/pm.jpg",
+    url: "",
+  },
+  { name: "Esomovie Rita", role: "OM", photo: "/assets/om.jpg", url: "" },
+  {
+    name: "Tomiwa Adelae",
+    role: "Head of Technology",
+    photo: "/assets/tomiwa-adelae.jpeg",
+    url: "https://tomiwaadelae.com.ng",
+  },
 ];
 
 export default function Home() {
@@ -275,7 +292,13 @@ export default function Home() {
                     className="h-full w-full object-cover"
                   />
                 </div>
-                <h3 className="font-semibold">{member.name}</h3>
+                <Link
+                  target="_blank"
+                  className="font-semibold hover:underline text-primary"
+                  href={member.url}
+                >
+                  {member.name}
+                </Link>
                 <p className="text-sm text-muted-foreground">{member.role}</p>
               </div>
             ))}
