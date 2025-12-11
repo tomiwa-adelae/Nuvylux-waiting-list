@@ -7,6 +7,7 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import axios from "axios";
 import {
   Select,
   SelectContent,
@@ -64,25 +65,16 @@ export default function WaitlistForm() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/waitlist", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to submit");
-      }
+      await axios.post("/api/waitlist", data);
 
       setIsSubmitted(true);
       toast.success("You're on the list!", {
         description: "We'll be in touch soon with exclusive updates.",
       });
-    } catch {
+    } catch (error: any) {
+      console.log(error);
       toast.error("Something went wrong", {
-        description: "Please try again later.",
+        description: error?.response?.data.error,
       });
     } finally {
       setIsSubmitting(false);
