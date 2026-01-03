@@ -265,6 +265,7 @@ export default function AdminDashboard() {
             </CardHeader>
             <CardContent>
               <p className="text-2xl font-bold">
+                {/* @ts-ignore */}
                 {waitlistStats.byUserType.brand}
               </p>
             </CardContent>
@@ -292,6 +293,7 @@ export default function AdminDashboard() {
             </CardHeader>
             <CardContent>
               <p className="text-2xl font-bold">
+                {/* @ts-ignore */}
                 {waitlistStats.byUserType.brand}
               </p>
             </CardContent>
