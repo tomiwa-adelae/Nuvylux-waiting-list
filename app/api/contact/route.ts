@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { sendContactConfirmationEmail, sendContactAdminNotificationEmail } from "@/lib/email";
+import {
+  sendContactConfirmationEmail,
+  sendContactAdminNotificationEmail,
+} from "@/lib/email";
 
 export async function POST(request: Request) {
   try {
@@ -16,12 +19,16 @@ export async function POST(request: Request) {
     }
 
     // Validate subject is one of the allowed values
-    const validSubjects = ["general", "creator", "partnership", "press", "support", "feedback"];
+    const validSubjects = [
+      "general",
+      "creator",
+      "partnership",
+      "press",
+      "support",
+      "feedback",
+    ];
     if (!validSubjects.includes(subject)) {
-      return NextResponse.json(
-        { error: "Invalid subject" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Invalid subject" }, { status: 400 });
     }
 
     // Save to database
@@ -60,6 +67,41 @@ export async function POST(request: Request) {
     console.error("Contact form submission error:", error);
     return NextResponse.json(
       { error: "Failed to submit contact form" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET() {
+  try {
+    const contactMessages = await prisma.contactMessage.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    const stats = {
+      total: contactMessages.length,
+      bySubject: {
+        general: contactMessages.filter((m) => m.subject === "general").length,
+        creator: contactMessages.filter((m) => m.subject === "creator").length,
+        partnership: contactMessages.filter((m) => m.subject === "partnership")
+          .length,
+        press: contactMessages.filter((m) => m.subject === "press").length,
+        support: contactMessages.filter((m) => m.subject === "support").length,
+        feedback: contactMessages.filter((m) => m.subject === "feedback")
+          .length,
+      },
+    };
+
+    return NextResponse.json({
+      messages: contactMessages,
+      stats,
+    });
+  } catch (error) {
+    console.error("Error fetching contact messages:", error);
+    return NextResponse.json(
+      { error: "Failed to fetch contact messages" },
       { status: 500 }
     );
   }

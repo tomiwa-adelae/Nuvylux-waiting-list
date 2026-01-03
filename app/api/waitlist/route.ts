@@ -20,12 +20,14 @@ export async function POST(request: Request) {
     }
 
     // Validate userType
-    const validUserTypes: UserType[] = ["customer", "creator", "brand", "investor"];
+    const validUserTypes: UserType[] = [
+      "customer",
+      "creator",
+      "brand",
+      "investor",
+    ];
     if (!validUserTypes.includes(userType)) {
-      return NextResponse.json(
-        { error: "Invalid user type" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Invalid user type" }, { status: 400 });
     }
 
     // Check for duplicate email
@@ -104,30 +106,63 @@ export async function POST(request: Request) {
 
 export async function GET() {
   try {
-    const entries = await prisma.waitlist.findMany({
-      orderBy: { createdAt: "desc" },
-      select: {
-        id: true,
-        firstName: true,
-        lastName: true,
-        userType: true,
-        createdAt: true,
+    // Fetch all waitlist entries, ordered by most recent
+    const waitlistEntries = await prisma.waitlist.findMany({
+      orderBy: {
+        createdAt: "desc",
       },
     });
 
+    // Get statistics
+    const stats = {
+      total: waitlistEntries.length,
+      byUserType: {
+        customer: waitlistEntries.filter((e) => e.userType === "customer")
+          .length,
+        creator: waitlistEntries.filter((e) => e.userType === "creator").length,
+        brand: waitlistEntries.filter((e) => e.userType === "brand").length,
+        investor: waitlistEntries.filter((e) => e.userType === "investor")
+          .length,
+      },
+      recentSignups: waitlistEntries.filter((e) => {
+        const dayAgo = new Date();
+        dayAgo.setDate(dayAgo.getDate() - 1);
+        return new Date(e.createdAt) > dayAgo;
+      }).length,
+    };
+
     return NextResponse.json({
-      count: entries.length,
-      entries: entries.map((entry) => ({
-        id: entry.id,
-        name: `${entry.firstName} ${entry.lastName}`,
-        userType: entry.userType,
-        createdAt: entry.createdAt,
-      })),
+      entries: waitlistEntries,
+      stats,
     });
   } catch (error) {
-    console.error("Waitlist fetch error:", error);
+    console.error("Error fetching waitlist:", error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: "Failed to fetch waitlist data" },
+      { status: 500 }
+    );
+  }
+}
+
+// Optional: Add DELETE endpoint to remove entries
+export async function DELETE(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get("id");
+
+    if (!id) {
+      return NextResponse.json({ error: "ID is required" }, { status: 400 });
+    }
+
+    await prisma.waitlist.delete({
+      where: { id },
+    });
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error("Error deleting waitlist entry:", error);
+    return NextResponse.json(
+      { error: "Failed to delete entry" },
       { status: 500 }
     );
   }
