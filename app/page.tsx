@@ -94,8 +94,9 @@ const stats = [
 
 const teamMembers = [
   { name: "Hannah Diei", role: "CEO", photo: "/assets/ceo.jpg", url: "" },
-  { name: "Ayo Odunayo", role: "CFO", photo: "/assets/cfo.jpg", url: "" },
+  { name: "Esomovie Rita", role: "COO", photo: "/assets/om.jpg", url: "" },
   { name: "Adeyemi Ayomide", role: "CMO", photo: "/assets/cmo.jpg", url: "" },
+  { name: "Aliyah Akintola", role: "CFO", photo: "/assets/cfo.jpeg", url: "" },
   {
     name: "Adaeze Pearl Muoghalu",
     role: "CCO",
@@ -108,10 +109,9 @@ const teamMembers = [
     photo: "/assets/pm.jpg",
     url: "",
   },
-  { name: "Esomovie Rita", role: "OM", photo: "/assets/om.jpg", url: "" },
   {
     name: "Tomiwa Adelae",
-    role: "Head of Technology",
+    role: "CTO",
     photo: "/assets/tomiwa-adelae.jpeg",
     url: "https://tomiwaadelae.com.ng",
   },

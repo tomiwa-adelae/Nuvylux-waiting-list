@@ -50,14 +50,18 @@ export async function sendWaitlistConfirmationEmail(data: WaitlistData) {
               <!-- Content -->
               <tr>
                 <td style="padding: 40px;">
-                  <h2 style="color: #0a0a0a; margin: 0 0 20px; font-size: 24px;">Welcome to the Future of Beauty, ${data.firstName}!</h2>
+                  <h2 style="color: #0a0a0a; margin: 0 0 20px; font-size: 24px;">Welcome to the Future of Beauty, ${
+                    data.firstName
+                  }!</h2>
 
                   <p style="color: #333333; font-size: 16px; line-height: 1.6; margin: 0 0 20px;">
                     Thank you for joining the NUVYLUX waitlist as a <strong>${userTypeLabel}</strong>. You're now part of an exclusive community that's redefining luxury beauty through innovation.
                   </p>
 
                   <div style="background-color: #f8f8f8; border-left: 4px solid #2E8B57; padding: 20px; margin: 30px 0;">
-                    <p style="color: #0a0a0a; font-size: 18px; margin: 0; font-weight: 600;">Your Waitlist Position: #${data.position}</p>
+                    <p style="color: #0a0a0a; font-size: 18px; margin: 0; font-weight: 600;">Your Waitlist Position: #${
+                      data.position
+                    }</p>
                   </div>
 
                   <p style="color: #333333; font-size: 16px; line-height: 1.6; margin: 0 0 20px;">
@@ -199,7 +203,9 @@ export async function sendContactConfirmationEmail(data: ContactEmailData) {
 
                   <div style="background-color: #f8f8f8; border-left: 4px solid #339999; padding: 20px; margin: 30px 0;">
                     <p style="color: #666666; font-size: 14px; margin: 0 0 10px; font-weight: 600;">Your Message:</p>
-                    <p style="color: #333333; font-size: 16px; margin: 0; line-height: 1.6;">${data.message}</p>
+                    <p style="color: #333333; font-size: 16px; margin: 0; line-height: 1.6;">${
+                      data.message
+                    }</p>
                   </div>
 
                   <p style="color: #333333; font-size: 16px; line-height: 1.6; margin: 0;">
@@ -268,7 +274,9 @@ Where Innovation Meets Luxury
   }
 }
 
-export async function sendContactAdminNotificationEmail(data: ContactAdminEmailData) {
+export async function sendContactAdminNotificationEmail(
+  data: ContactAdminEmailData
+) {
   const subjectLabel = subjectLabels[data.subject] || data.subject;
 
   const htmlContent = `
@@ -295,7 +303,9 @@ export async function sendContactAdminNotificationEmail(data: ContactAdminEmailD
                 <td style="padding: 40px;">
                   <div style="background-color: #f0fdfa; border: 1px solid #339999; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
                     <p style="color: #339999; font-size: 18px; margin: 0; font-weight: 600;">Subject: ${subjectLabel}</p>
-                    <p style="color: #666666; font-size: 14px; margin: 10px 0 0;">ID: ${data.id}</p>
+                    <p style="color: #666666; font-size: 14px; margin: 10px 0 0;">ID: ${
+                      data.id
+                    }</p>
                   </div>
 
                   <h2 style="color: #0a0a0a; margin: 0 0 20px; font-size: 20px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px;">Contact Details</h2>
@@ -307,7 +317,9 @@ export async function sendContactAdminNotificationEmail(data: ContactAdminEmailD
                     </tr>
                     <tr>
                       <td style="color: #666666; font-weight: 600;">Email:</td>
-                      <td style="color: #0a0a0a;"><a href="mailto:${data.email}" style="color: #339999;">${data.email}</a></td>
+                      <td style="color: #0a0a0a;"><a href="mailto:${
+                        data.email
+                      }" style="color: #339999;">${data.email}</a></td>
                     </tr>
                     <tr>
                       <td style="color: #666666; font-weight: 600;">Date:</td>
@@ -317,11 +329,17 @@ export async function sendContactAdminNotificationEmail(data: ContactAdminEmailD
 
                   <h2 style="color: #0a0a0a; margin: 0 0 15px; font-size: 20px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px;">Message</h2>
                   <div style="background-color: #f8f8f8; padding: 20px; border-radius: 8px;">
-                    <p style="color: #333333; font-size: 16px; line-height: 1.6; margin: 0; white-space: pre-wrap;">${data.message}</p>
+                    <p style="color: #333333; font-size: 16px; line-height: 1.6; margin: 0; white-space: pre-wrap;">${
+                      data.message
+                    }</p>
                   </div>
 
                   <div style="margin-top: 30px; text-align: center;">
-                    <a href="mailto:${data.email}?subject=Re: ${subjectLabel}" style="display: inline-block; background-color: #339999; color: #ffffff; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: 600;">Reply to ${data.name}</a>
+                    <a href="mailto:${
+                      data.email
+                    }?subject=Re: ${subjectLabel}" style="display: inline-block; background-color: #339999; color: #ffffff; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: 600;">Reply to ${
+    data.name
+  }</a>
                   </div>
                 </td>
               </tr>
@@ -417,7 +435,9 @@ export async function sendAdminNotificationEmail(data: WaitlistData) {
               <tr>
                 <td style="padding: 40px;">
                   <div style="background-color: #f0fdf4; border: 1px solid #2E8B57; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
-                    <p style="color: #2E8B57; font-size: 18px; margin: 0; font-weight: 600;">Waitlist Position: #${data.position}</p>
+                    <p style="color: #2E8B57; font-size: 18px; margin: 0; font-weight: 600;">Waitlist Position: #${
+                      data.position
+                    }</p>
                   </div>
 
                   <h2 style="color: #0a0a0a; margin: 0 0 20px; font-size: 20px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px;">Contact Details</h2>
@@ -425,40 +445,61 @@ export async function sendAdminNotificationEmail(data: WaitlistData) {
                   <table role="presentation" width="100%" cellspacing="0" cellpadding="8" style="margin-bottom: 30px;">
                     <tr>
                       <td style="color: #666666; width: 140px; font-weight: 600;">Name:</td>
-                      <td style="color: #0a0a0a;">${data.firstName} ${data.lastName}</td>
+                      <td style="color: #0a0a0a;">${data.firstName} ${
+    data.lastName
+  }</td>
                     </tr>
                     <tr>
                       <td style="color: #666666; font-weight: 600;">Email:</td>
-                      <td style="color: #0a0a0a;"><a href="mailto:${data.email}" style="color: #2E8B57;">${data.email}</a></td>
+                      <td style="color: #0a0a0a;"><a href="mailto:${
+                        data.email
+                      }" style="color: #2E8B57;">${data.email}</a></td>
                     </tr>
                     <tr>
                       <td style="color: #666666; font-weight: 600;">Phone:</td>
-                      <td style="color: #0a0a0a;"><a href="tel:${data.phone}" style="color: #2E8B57;">${data.phone}</a></td>
+                      <td style="color: #0a0a0a;"><a href="tel:${
+                        data.phone
+                      }" style="color: #2E8B57;">${data.phone}</a></td>
                     </tr>
                     <tr>
                       <td style="color: #666666; font-weight: 600;">User Type:</td>
                       <td style="color: #0a0a0a;"><span style="background-color: #2E8B57; color: white; padding: 4px 12px; border-radius: 4px; font-size: 14px;">${userTypeLabel}</span></td>
                     </tr>
-                    ${data.brandName ? `
+                    ${
+                      data.brandName
+                        ? `
                     <tr>
                       <td style="color: #666666; font-weight: 600;">Brand Name:</td>
                       <td style="color: #0a0a0a;">${data.brandName}</td>
                     </tr>
-                    ` : ""}
-                    ${data.instagram ? `
+                    `
+                        : ""
+                    }
+                    ${
+                      data.instagram
+                        ? `
                     <tr>
                       <td style="color: #666666; font-weight: 600;">Instagram:</td>
-                      <td style="color: #0a0a0a;"><a href="https://instagram.com/${data.instagram.replace("@", "")}" style="color: #2E8B57;">${data.instagram}</a></td>
+                      <td style="color: #0a0a0a;"><a href="https://instagram.com/${data.instagram.replace(
+                        "@",
+                        ""
+                      )}" style="color: #2E8B57;">${data.instagram}</a></td>
                     </tr>
-                    ` : ""}
+                    `
+                        : ""
+                    }
                   </table>
 
-                  ${data.message ? `
+                  ${
+                    data.message
+                      ? `
                   <h2 style="color: #0a0a0a; margin: 0 0 15px; font-size: 20px; border-bottom: 2px solid #f0f0f0; padding-bottom: 10px;">Message</h2>
                   <div style="background-color: #f8f8f8; padding: 20px; border-radius: 8px;">
                     <p style="color: #333333; font-size: 16px; line-height: 1.6; margin: 0;">${data.message}</p>
                   </div>
-                  ` : ""}
+                  `
+                      : ""
+                  }
                 </td>
               </tr>
 
